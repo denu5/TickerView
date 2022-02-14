@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
-import { Page, Text, Card, Link, Tabs, Breadcrumbs, Display } from '@geist-ui/core';
+import { Page, Text, Card, Link, Tabs, Breadcrumbs } from '@geist-ui/core';
 import { ITickerDetails, referenceClient } from '@polygon.io/client-js';
 import { FundamentalData } from "react-ts-tradingview-widgets";
 
