@@ -3,7 +3,7 @@ import { GeistProvider, CssBaseline } from '@geist-ui/core'
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { useState } from 'react'
 
-export default ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient())
 
   return (
@@ -17,3 +17,5 @@ export default ({ Component, pageProps }: AppProps) => {
     </GeistProvider >
   )
 }
+
+export default App;
