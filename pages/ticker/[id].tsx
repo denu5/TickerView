@@ -2,8 +2,9 @@ import { GetServerSideProps, NextPage } from 'next';
 import getConfig from 'next/config'
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
+import NextLink from 'next/link';
 
-import { Page, Text, Card, Link, Tabs } from '@geist-ui/core';
+import { Page, Text, Card, Link, Tabs, Breadcrumbs, Display } from '@geist-ui/core';
 import { ITickerDetails, referenceClient } from '@polygon.io/client-js';
 import { FundamentalData } from "react-ts-tradingview-widgets";
 
@@ -26,8 +27,28 @@ const TickerDetailsPage: NextPage<ITickerDetails> = ({ results: ticker }) => {
 
     return (
         <Page>
-            <Text h1>{ticker?.name} {ticker?.currency_name}</Text>
-            
+            <Breadcrumbs my={2}>
+                <NextLink href="/">
+                    <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
+                </NextLink>
+                {ticker?.market &&
+                    <NextLink href={`/?market=${ticker?.market}`}>
+                        <Breadcrumbs.Item nextLink>{ticker?.market?.toUpperCase()}</Breadcrumbs.Item>
+                    </NextLink>
+                }
+                {ticker?.type &&
+                    <NextLink href={`/?type=${ticker?.type}`}>
+                        <Breadcrumbs.Item nextLink>{ticker?.type?.toUpperCase()}</Breadcrumbs.Item>
+                    </NextLink>
+                }
+                <Breadcrumbs.Item>{ticker?.name}</Breadcrumbs.Item>
+            </Breadcrumbs>
+
+            <Card my={2}>
+                <Text h1>{ticker?.ticker}</Text>
+                <Text h3>{ticker?.name}</Text>
+            </Card>
+
             <Tabs initialValue="1">
 
                 {/* 1. Data from serverside requests */}

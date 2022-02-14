@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    scrollRestoration: true,
+  },
   // https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration
   serverRuntimeConfig: {
     // Will be available only on server
